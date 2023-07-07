@@ -30,15 +30,13 @@ class Scraper:
         while is_next_page:
             print("getting data from page {} : ".format(page_counter), end="  ")
             self.parse_page(driver)
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             try:
-                # next_link = driver.find_element(By.CLASS_NAME, 'next')
                 next_link = driver.find_element(By.PARTIAL_LINK_TEXT, 'Nex')
             except NoSuchElementException:
                 is_next_page = False
 
             else:
-                ActionChains(driver).move_to_element(next_link)
+                ActionChains(driver).scroll_to_element(next_link).move_to_element(next_link)
                 next_link.click()
                 is_next_page = True
                 page_counter += 1

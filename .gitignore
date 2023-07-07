@@ -1,0 +1,6 @@
+.env
+venv/
+*.jsonl
+.idea/
+__pycache__/
+geckodriver.log

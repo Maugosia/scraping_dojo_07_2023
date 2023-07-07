@@ -18,9 +18,8 @@ class Scraper:
 
     def get_data_from_url(self):
         options = webdriver.FirefoxOptions()
-        options.add_argument('--ignore-certificate-errors')
-        options.add_argument('--incognito')
         options.add_argument('--headless')
+        options.add_argument('--ignore-certificate-errors')
         options.add_argument('--proxy-server=%s' % self.proxy)
         driver = webdriver.Firefox(options=options)
         driver.get(self.url)
